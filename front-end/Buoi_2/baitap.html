@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Bài tập buổi 2</title>
+</head>
+
+<body>
+    <form action="processLogin.php" method="post">
+        <h2>Đăng kí</h2>
+        <div class="row">
+            <div class="left-col">
+                <label for="name">Tên:</label>
+            </div>
+            <div class="right-col">
+                <input type="text" id="name" name="name">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, quam.</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-col">
+                <label for="email">Email:</label>
+            </div>
+            <div class="right-col">
+                <input type="email" id="email" name="email">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, nulla!</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="left-col">
+                <label for="password">Mật khẩu:</label>
+            </div>
+            <div class="right-col">
+                <input type="password" id="password" name="password">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="left-col">
+                <label for="repassword">Xác nhận mật khẩu</label>
+            </div>
+            <div class="right-col">
+                <input type="password" id="repassword" name="repassword">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, est.</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="left-col">
+                <label for="gender" name="gender">Giới tính:</label>
+            </div>
+            <div class="right-col">
+                <input type="radio" value="nam" id="male" name="gender" checked><label for="male">Nam</label> <br>
+                <input type="radio" value="nữ" id="female" name="gender"><label for="female">Nữ</label> <br>
+                <input type="radio" value="khác" id="diffrent" name="gender"><label for="diffrent">(Giới tính
+                    khác)</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="left-col">
+                <label for="date">Ngày sinh:</label>
+            </div>
+            <div class="right-col">
+                <select name="date">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <input type="number" placeholder="Ngày" name="date1">
+                <input type="number" placeholder="Năm" name="year">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="left-col">
+                <label for="confirm">Xác nhận</label>
+            </div>
+            <div class="right-col">
+                <div id="confirm" class="g-recaptcha" data-sitekey="6LeQ8JYnAAAAADK7YAoJFNaOsmUM3LIx6z7Vub1n"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="left-col"></div>
+            <div class="right-col">
+                <label for="read">
+                    <input type="checkbox" id="read"> Tôi đã đọc <span style="color: red;font-weight: bold;">Nội qui
+                        diễn
+                        đàn.</span>Tôi hứa sẽ chấp hành
+                </label>
+                <br>
+                <button style="background-color: rgb(133, 15, 15);">Đăng kí</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

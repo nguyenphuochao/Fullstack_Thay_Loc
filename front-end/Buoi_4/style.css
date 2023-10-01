@@ -1,0 +1,9 @@
+#id1{
+    background-color: rgb(0,255,0,0.1);
+}
+#id2{
+    background-image: url("./con-cho-1.jpg");
+    background-size: cover;
+    width: 400px;
+    height: 300px;
+}

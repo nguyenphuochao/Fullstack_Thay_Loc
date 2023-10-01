@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 94px;
+    align-items: center;
+}
+
+header ul li {
+    display: inline;
+    margin-left: 18px;
+}
+
+header ul li a {
+    text-transform: uppercase;
+}
+
+header ul li a:hover {
+    color: white;
+    background-color: aqua;
+    padding: 12px 0;
+}
+/* Home */
+section.home{
+    background-image: url("../image/banner.jpg");
+    background-size: cover;
+    height: 454px;
+    text-align: center;
+    padding-top: 76px;
+    padding-bottom: 81px;
+    color: white;
+}
+section.home h1{
+    text-transform: capitalize;
+    margin-bottom: 37px;
+}
+section.home p{
+    width: 575px;
+    margin: 0 auto;
+    margin-bottom: 49px;
+}
+section.home button{
+    margin-bottom: 42px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 13px 10px;
+    background-color: aqua;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+section.home img{
+    cursor: pointer;
+}
+/* Portfolio */
+section.portfolio{
+    text-align: center;
+}
+section.portfolio h1{
+    margin-top: 52px;
+    margin-bottom: 18px;
+    text-transform: capitalize;
+}
+section.portfolio p{
+    margin-bottom: 37px;
+}
+section.portfolio .portfolio-tab{
+    margin-bottom: 42px;
+    display: flex;
+    justify-content: center;
+}
+section.portfolio .portfolio-tab .portfolio-item{
+    margin-left: 15px;
+    background-color: aqua;
+    padding: 12px;
+    color: white;
+    cursor: pointer;
+}
+section.portfolio .portfolio-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+section.portfolio .portfolio-list .portfolio-item{
+    width: 25%;
+    margin-bottom: 29px;
+}
+/* section.portfolio .portfolio-list .portfolio-item:hover{
+    width: 185px;
+    height: 185px;
+    background-image: url("../image/hover.png");
+    border: none;
+    border-radius: 50%;
+} */

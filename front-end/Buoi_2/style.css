@@ -1,0 +1,17 @@
+.row{
+    display: flex;
+}
+.left-col{
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+.right-col{
+    width: 70%;
+}
+button{
+    color: white;
+}
+hr{
+    width: 70%;
+}

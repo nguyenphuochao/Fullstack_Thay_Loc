@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Regiter Has Captcha</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="processRegister.php" method="post">
+            <h1 class="text-center">Đăng kí tài khoản</h1>
+            <div class="form-group">
+                <label class="w-100">Họ và tên: <input type="text" class="form-control" id="fullname"
+                        name="fullname"></label>
+
+            </div>
+            <div class="form-group">
+                <label class="w-100">Số điện thoại: <input type="text" class="form-control" id="phone"
+                        name="phone"></label>
+
+            </div>
+            <div class="form-group">
+                <label class="w-100">Email: <input type="text" class="form-control" id="email" name="email"></label>
+
+            </div>
+            <div class="form-group">
+                <label class="w-100">Mật khẩu: <input type="text" class="form-control" id="password"
+                        name="password"></label>
+
+            </div>
+            <div class="form-group">
+                <label class="w-100">Xác nhận mật khẩu: <input type="text" class="form-control" id="repassword"
+                        name="repassword"></label>
+
+            </div>
+            <div class="form-group">
+                <label for="confirm">Xác nhận</label>
+                <div class="g-recaptcha" data-sitekey="6LekO-wnAAAAAF2lORQH2i5a3HV6_3GoCCc-gJg1"></div>
+                <input type="text" name="hiddenRecaptcha" style="opacity: 0;">
+            </div>
+            <div>
+                <button class="btn btn-primary">Regiter</button>
+            </div>
+        </form>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- Recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Jquery validate -->
+    <script src="vendor/jquery-validation-1.19.5/dist/jquery.validate.min.js"></script>
+    <!-- Nhúng file js của tôi -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

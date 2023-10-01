@@ -1,0 +1,40 @@
+li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+form{
+    padding: 50px;
+}
+.row{
+    display: flex;
+}
+.col-5{
+    width: 50%;
+}
+.col-2{
+    width: 20%;
+    margin-bottom: 20px;
+}
+.col-8{
+    width: 80%;
+}
+nav ul{
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+nav ul li{
+    margin-bottom: 10px;
+}
+h1{
+    margin: 0;
+}
+label{
+    font-weight: bold;
+}
+button{
+    padding: 10px 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bài tập buổi 3</title>
+</head>
+
+<body>
+    <form action="processForm.php" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-5">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHZAq08u4YaR0Jsu2CgeptdxC74y-9QEeFYEAb6YHP&s"
+                    alt="">
+                <nav>
+                    <ul>
+                        <li><a style="color: aqua;" href="#">Text 1</a></li>
+                        <li><a href="#">Text 2</a></li>
+                        <li><a href="#">Text 3</a></li>
+                        <li><a href="#">Text 4</a></li>
+                    </ul>
+                </nav>
+                <br>
+                <button>Save</button>
+            </div>
+            <div class="col-5">
+                <h1>Personal Infomation</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="firstname">First Name</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" id="firstname" name="firstname" autofocus>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="lastname">Last Name</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" id="lastname" name="lastname">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" id="email" name="email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="image">Upload File</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="file" id="image" name="image">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="local">Location</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" id="local" name="local">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="country">Country</label>
+                    </div>
+                    <div class="col-8">
+                        <select name="country" id="country">
+                            <option value="">Select</option>
+                            <option value="VN">VN</option>
+                            <option value="LAo">Lao</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="level">English Level</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="range" id="level" name="level" min="1" max="10">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="gender">Gender</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="radio" value="Male" name="gender" id="male" checked><label for="male">Nam</label>
+                        <input type="radio" value="Female" name="gender" id="female"><label for="female">Nữ</label>
+                        <input type="radio" value="Diff" name="gender" id="diff"><label for="diff">Khác</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

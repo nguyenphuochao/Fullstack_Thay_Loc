@@ -1,0 +1,19 @@
+  .colunm1 {
+      background-color: red;
+  }
+
+  .colunm2 {
+      background-color: yellow;
+  }
+
+  @media (min-width:768px) {
+      .row {
+          display: flex;
+          flex-wrap: wrap;
+      }
+
+      .colunm1,
+      .colunm2 {
+          width: 50%;
+      }
+  }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon_TGDD.ico">
+    <title>Buổi 2</title>
+</head>
+
+<body>
+    <form action="processLogin.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" autofocus><br><br>
+        Password: <input type="password" name="password"><br><br>
+        Quốc gia:<select name="country">
+            <option value="VN">VN</option>
+            <option value="LAO">LAO</option>
+            <option value="Thai Lan">Thai Lan</option>
+        </select><br><br>
+        Content: <br>
+        <textarea name="content" cols="30" rows="10"></textarea><br>
+        <h2>Danh sách có thứ tự</h2>
+        <ol type="a">
+            <li>Iphone</li>
+            <li>Samsung</li>
+            <li>Nokia</li>
+        </ol>
+        <h2>Danh sách không có thứ tự</h2>
+        <ul type="disc">
+            <li>Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li>
+        </ul>
+        <video src="video.mp4" controls width="300px"></video>
+        <br>
+        <button type="submit">Login</button>
+        <button type="reset">Reset</button>
+        <button type="button">Button</button>
+        <table border cellspacing="0">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Giới tính</th>
+                    <th>Nghề nghiệp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Tèo</td>
+                    <td>Nam</td>
+                    <td>IT</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Thanh</td>
+                    <td>Nữ</td>
+                    <td>HR</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Tú</td>
+                    <td>Nữ</td>
+                    <td>Account</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>SVG+</h2>
+    </form>
+</body>
+
+</html>

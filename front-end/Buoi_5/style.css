@@ -1,0 +1,72 @@
+@font-face{
+    font-family: conmeo;
+    src: url("./font/Lato-BoldItalic.ttf");
+}
+#id1{
+    border: 1px solid black;
+    margin-bottom: 10px;
+    text-align: right;
+}
+#id2{
+    border: 1px solid black;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+#id3{
+    text-decoration: line-through;
+    margin-bottom: 10px;
+}
+#id4{
+    width: 200px;
+    height: auto;
+    border: 1px solid black;
+    white-space: normal;
+    font-family: conmeo;
+    margin-bottom: 10px;
+}
+table{
+    width: 50%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+table th,table td{
+    border: 1px solid black;
+}
+table thead{
+    background-color: pink;
+}
+table tr:nth-child(even){
+    background-color: red;
+}
+table tbody tr:nth-child(odd):hover{
+    background-color: yellow;
+}
+#id5{
+    width: 40px;
+    height: 30px;
+    border: 1px solid black;
+    outline: 4px solid pink;
+    outline-offset: 10px;
+    margin-bottom: 10px;
+}
+#id6{
+    margin-bottom: 400px;
+}
+#id6-1{
+    float: right;
+}
+#id7-1,#id7-2{
+    width: 50%;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+#id7-1{
+    background-color: red;
+    height: 100px;
+    float: left;
+}
+#id7-2{
+    background-color: yellow;
+    height: 100px;
+    float: left;
+}
