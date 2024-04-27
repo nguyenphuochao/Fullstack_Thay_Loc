@@ -32,6 +32,10 @@ arr1.shift();
 // console.log(arr1);
 
 // Hàm splice thêm/xóa bất kì vị trí phần tử trong mảng(đa nhiệm thêm/xóa)
+// Nó sẽ nhận 3 tham số:
+//      + Vị trí bắt đầu lấy ra
+//      + Số lượng phần tử
+//      + Tham số array chứa phần tử cần thêm 
 var arr1 = ["toàn", "hảo", "mon"];
 var start = 0;
 var length = 3;

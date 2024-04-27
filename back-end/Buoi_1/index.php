@@ -1,9 +1,9 @@
 <?php
-// Trong js thì var a=1;
+// Trong js thì var a = 1;
 $a = 1;
 echo $a;
 echo "<br>";
-// Cập nhật giá trị a=2;
+// Cập nhật giá trị a = 2;
 $a = 2;
 echo $a;
 echo "<br>";
@@ -29,10 +29,20 @@ for ($i = 0; $i <= count($arr) - 1; $i++) {
 }
 echo $sum;
 echo "<br>";
-// Tính tổng các PT lẻ trong mảng
+// Tính tổng các PT lẻ trong mảng viết cách 1
 $sum = 0;
 for ($i = 0; $i <= count($arr) - 1; $i++) {
     if ($arr[$i] % 2 != 0)
         $sum += $arr[$i];
+}
+echo $sum;
+echo "<br>";
+// Tính tổng các phần tử lẻ viết cách 2
+$arr = [1, 2, 3, 4, 5];
+$sum = 0;
+for ($i = 0; $i < count($arr); $i++) {
+    if ($arr[$i] % 2 != 0) {
+        $sum += $arr[$i];
+    }
 }
 echo $sum;
