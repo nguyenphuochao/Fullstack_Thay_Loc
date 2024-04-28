@@ -1,1 +1,1 @@
-Build project PHP MVC pure
+Learn PHP MVC pure

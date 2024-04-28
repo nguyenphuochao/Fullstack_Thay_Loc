@@ -33,7 +33,7 @@
                     <td><?php echo $value["department"]; ?></td>
                     <td><?php echo number_format($value["salary"]); ?></td>
                 </tr>
-            <?php endforeach ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </body>

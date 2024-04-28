@@ -26,7 +26,7 @@ var arr1 = ["toàn", "hảo", "mon"];
 arr1.unshift("tùng");
 // console.log(arr1);
 
-// Hàm shif lấy 1 phần tử đầu array
+// Hàm shift lấy 1 phần tử đầu array
 var arr1 = ["toàn", "hảo", "mon"];
 arr1.shift();
 // console.log(arr1);
@@ -54,6 +54,13 @@ arr1.sort(function (a, b) {
 });
 // console.log(arr1);
 
+// sắp xếp giảm dần của các con số và chuỗi
+var arr1 = [1, 100, 10, 2.1, 2.9, "9", 101];
+arr1.sort(function (a, b) {
+    return Number(b) - Number(a)
+});
+console.log(arr1);
+
 // Hàm reverse đảo ngược lại thứ tự
 var arr1 = [1, 9, 3, 8];
 arr1.reverse();
@@ -73,6 +80,7 @@ var arr2 = arr1.slice(start, end);
 // console.log(arr1);
 
 // Hàm indexOf() trả về index phần tử đầu tiên dc tìm thấy
+// Không tìm thấy trả về -1
 var arr1 = ["hảo", "toàn", "mon", "hảo"];
 //console.log(arr1.indexOf("hảo")); // 0
 
