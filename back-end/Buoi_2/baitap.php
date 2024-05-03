@@ -1,5 +1,5 @@
 <?php
-// Bài 1
+// Bài 1. Tính tổng từ 3 đến 15
 $s = 0;
 for ($i = 3; $i <= 15; $i++) {
     $s += $i;
@@ -27,10 +27,13 @@ echo "<br>";
 // bài 4 Tổng a + b là chẳn thì trả về true
 function isTongChan($a, $b)
 {
+    // cách 1
     if (($a + $b) % 2 == 0) {
         return true;
     }
     return false;
+    // cách 2
+    return ($a + $b) % 2 == 0; 
 }
 // Gọi hàm isTongChan
 echo isTongChan(2, 4);
