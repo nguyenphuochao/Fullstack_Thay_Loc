@@ -1,1 +1,2 @@
-Learn PHP MVC pure
+- Học PHP thuần
+- File index.php là bài giảng thực hành

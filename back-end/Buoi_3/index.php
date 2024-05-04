@@ -30,3 +30,4 @@ function f3($a, $b)
     return $a + $b + $d;
 }
 echo f3(1, 1);
+// map, filter, reduce của php giống js tham khảo w3school
