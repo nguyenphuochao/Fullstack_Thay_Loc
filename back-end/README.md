@@ -1,2 +1,3 @@
 - Học PHP thuần
 - File index.php là bài giảng thực hành
+- Các file buổi khác không có là do đang học làm project thực hành
