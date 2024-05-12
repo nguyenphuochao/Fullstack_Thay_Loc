@@ -3,12 +3,11 @@ session_start();
 require "../config.php"; // gắn cái kết nối ở đây
 require "../connectDB.php";
 $name = $_POST["name"];
-$birthday = $_POST["birthday"];
-$gender = $_POST["gender"];
-$sql = "INSERT INTO student (name,birthday,gender) 
-VALUES('$name','$birthday','$gender')";
+$number_of_credit = $_POST["number_of_credit"];
+$sql = "INSERT INTO subject (name,number_of_credit) 
+VALUES('$name',$number_of_credit)";
 if ($conn->query($sql) === TRUE) {
-    $_SESSION["success"] = "Đã tạo sinh viên thành công"; // sử dụng session để thông báo thêm mới thành công
+    $_SESSION["success"] = "Đã tạo môn học thành công"; // sử dụng session để thông báo thêm mới thành công
 } else {
     $_SESSION["error"] = "Error " . $sql . "<br>" . $conn->error;
 }
