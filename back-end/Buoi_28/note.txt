@@ -1,0 +1,17 @@
+OOP : Object Oriented Programing (Lập trình hướng đối tượng)
++ class (lớp - khuông bánh)
+   + property/attrbute: dùng để lưu trữ dữ liệu của đối tượng
+   + method(function - hàm)
++ object (đối tượng - cái bánh cụ thể)
+   cái bánh cụ thể = khuông bánh + nguyên vật liệu
+   đối tượng = lớp + dữ liệu
+   object = class + data
+
++ scope of object: tầm vực truy xuất
+  + public: bên trong class và bên ngoài class đều truy xuất (->) được
+  + protected: bên trong class thì truy xuất dc, nhưng bên ngoài class thì ko truy xuất được
+  + private
+
+Lưu ý:
+Bên trong class để truy xuất thuộc tính, hàm dùng $this->
+Bên ngoài hàm dùng biến đang nắm giữ đối tượng, sau đó dùng ->
