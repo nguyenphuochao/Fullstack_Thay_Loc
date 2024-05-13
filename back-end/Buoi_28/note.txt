@@ -9,8 +9,9 @@ OOP : Object Oriented Programing (Lập trình hướng đối tượng)
 
 + scope of object: tầm vực truy xuất
   + public: bên trong class và bên ngoài class đều truy xuất (->) được
-  + protected: bên trong class thì truy xuất dc, nhưng bên ngoài class thì ko truy xuất được
-  + private
+  + protected: bên trong class thì truy xuất dc, nhưng bên ngoài class thì ko truy xuất được, dc truy xuất trong class con
+  + private: chỉ truy xuất  dc trong class cha, ko dc truy xuất trong class con (class kế thừa),
+  ko dc truy xuất bên ngoài class cha lẫn con
 
 Lưu ý:
 Bên trong class để truy xuất thuộc tính, hàm dùng $this->

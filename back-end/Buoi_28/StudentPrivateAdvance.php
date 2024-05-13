@@ -5,8 +5,8 @@ class Student // lớp - khuông bánh
     public $id;
     public $name;
     public $birthday;
-    protected $gender; // protected chỉ cho phép truy cập bên trong hoặc lớp kế thừa từ nó
-
+    protected $gender;
+    private $tableName = "students"; // tạo tên table
     function __construct($id, $name, $birthday, $gender) // hàm auto load hỗ trợ khởi tạo object
     {
         $this->id = $id; // truy xuất thuộc tính
@@ -23,6 +23,10 @@ class Student // lớp - khuông bánh
         $age = $curentYear - $bornYear;
         return $age;
     }
+    function getTableName() // sử dụng getTableName để lấy ra giá trị của thuộc tính private
+    {
+        return $this->tableName;
+    }
 }
 // Tính kế thừa extends - Inherit
 // Kết thừa mọi thuộc tính và hàm
@@ -34,16 +38,27 @@ class SinhVienChatLuongCao extends Student
     {
         return "haha";
     }
+    function f2()
+    {
+        return $this->gender;
+    }
+    function f3()
+    {
+        return $this->oweFee;
+    }
     // ghi đè - thêm __contruct
-    function __construct($id, $name, $birthday, $gender, $discount)
+    function __construct($id, $name, $birthday, $gender, $discount = null)
     {
         parent::__construct($id, $name, $birthday, $gender); // gọi lại hàm __construct của lớp cha
-        $this->discount = $discount; // gán lại giá trị cho thuộc tính discount
+        if ($discount) {
+            $this->discount = $discount;
+        }
     }
 }
 
 // tạo 1 đối tượng - cái bánh
 // gọi hàm __construct của class SinhVienChatLuongCao
 // new SinhVienChatLuongCao trả về 1 đối tượng dc sinh ra từ lớp SinhVienChatLuongCao
-$sv1 = new SinhVienChatLuongCao("001", "Hao", "1999-04-30", "Nam", 20);
+$sv1 = new SinhVienChatLuongCao("001", "Hao", "1999-04-30", "Nam", 30);
 var_dump($sv1);
+echo $sv1->getTableName(); // lấy dc giá trị của tableName
