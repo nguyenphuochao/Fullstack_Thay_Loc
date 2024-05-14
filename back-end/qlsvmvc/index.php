@@ -1,4 +1,11 @@
 <?php
+session_start();
+// load models
+require "config.php";
+require "connectDB.php";
+require "functions.php";
+require "model/Student.php";
+require "model/StudentRepository.php";
 // Router
 $c = $_GET['c'] ?? 'student';
 $a = $_GET['a'] ?? 'list';
