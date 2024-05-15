@@ -1,8 +1,8 @@
 <?php require "layout/header.php" ?>
 <h1>Danh sách sinh viên</h1>
 <a href="/?a=add" class="btn btn-info">Add</a>
-<form action="list.html" method="GET">
-	<label class="form-inline justify-content-end">Tìm kiếm: <input type="search" name="search" class="form-control" value="">
+<form action="/" method="GET">
+	<label class="form-inline justify-content-end">Tìm kiếm: <input type="search" name="search" class="form-control" value="<?=$search?>">
 		<button class="btn btn-danger">Tìm</button>
 	</label>
 </form>
@@ -28,8 +28,8 @@
 				<td><?= $student->name ?></td>
 				<td><?= formatVietNamDate($student->birthday) ?></td>
 				<td><?= getGenderName($student->gender) ?></td>
-				<td><a href="/?a=edit&id=<?=$student->id?>">Sửa</a></td>
-				<td><a class="btn btn-danger btn-sm delete" data-url="list.html" type="student">Xóa</a></td>
+				<td><a href="/?a=edit&id=<?= $student->id ?>">Sửa</a></td>
+				<td><button class="btn btn-danger btn-sm delete" data-url="/?a=delete&id=<?= $student->id ?>" type="student">Xóa</button></td>
 			</tr>
 		<?php endforeach ?>
 	</tbody>
