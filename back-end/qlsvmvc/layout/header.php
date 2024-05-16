@@ -11,9 +11,10 @@
 
 <body>
     <div class="container" style="margin-top:20px;">
-        <a href="../student/list.html" class="active btn btn-info">Students</a>
-        <a href="../subject/list.html" class=" btn btn-info">Subject</a>
-        <a href="../register/list.html" class=" btn btn-info">Register</a>
+        <?php global $c; ?>
+        <a href="/" class="<?= $c == "student" ? "active" : "" ?> btn btn-info">Students</a>
+        <a href="/?c=subject" class="<?= $c == "subject" ? "active" : "" ?> btn btn-info">Subject</a>
+        <a href="/?c=register" class="<?= $c == "register" ? "active" : "" ?> btn btn-info">Register</a>
         <div style="height:40px; margin-top:20px">
             <div class="error bg-danger container-fluid text-center">
             </div>

@@ -6,6 +6,8 @@ require "connectDB.php";
 require "functions.php";
 require "model/Student.php";
 require "model/StudentRepository.php";
+require "model/Subject.php";
+require "model/SubjectRepository.php";
 // Router
 $c = $_GET['c'] ?? 'student';
 $a = $_GET['a'] ?? 'list';
