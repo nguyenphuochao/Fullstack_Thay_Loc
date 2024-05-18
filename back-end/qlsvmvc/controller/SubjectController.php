@@ -1,19 +1,24 @@
 <?php
 class SubjectController
 {
+    protected $redirectTo = "/?c=subject";
     function list()
     {
         $subjectRepository = new SubjectRepository();
         $search = "";
-        if (isset($_POST['search'])) {
-            $search = $_POST['search'];
+        if (!empty($_GET['search'])) {
+            $search = $_GET['search'];
             $subjects = $subjectRepository->getBySearch($search);
         } else {
             $subjects = $subjectRepository->getAll();
         }
-        require('view/subject/list.php');
+        require 'view/subject/list.php';
     }
     function add()
+    {
+        require "view/subject/add.php";
+    }
+    function save()
     {
         $data = $_POST;
         $subjectRepository = new SubjectRepository();
@@ -22,14 +27,14 @@ class SubjectController
         } else {
             $_SESSION["error"] = $subjectRepository->error;
         }
-        header("Location: /?c=subject");
+        header("Location: $this->redirectTo");
     }
     function edit()
     {
         $id = $_GET['id'];
         $subjectRepository = new SubjectRepository();
         $subject = $subjectRepository->find($id);
-        require('view/subject/edit.php');
+        require 'view/subject/edit.php';
     }
     function update()
     {
@@ -43,7 +48,7 @@ class SubjectController
         } else {
             $_SESSION["error"] = $subjectRepository->error;
         }
-        header("Location: /?c=subject");
+        header("Location: $this->redirectTo");
     }
     function delete()
     {
@@ -54,6 +59,6 @@ class SubjectController
         } else {
             $_SESSION["error"] = $subjectRepository->error;
         }
-        header("Location: /?c=subject");
+        header("Location: $this->redirectTo");
     }
 }

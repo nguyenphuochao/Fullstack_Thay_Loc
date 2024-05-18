@@ -1,1 +1,15 @@
 Xây dựng project đăng kí môn học theo mô hình MVC
+Mô hình MVC mà tôi sử dụng cho dự án này
+- Controller
+    NameController: Xử lí các phương thức 
+- Model 
+    NameModel: Xây dựng hướng đối tượng gồm thuộc tính và hàm __contruct
+    NameRepository: Xử lí truy vấn trong này thao tác trực tiếp với DB, dữ liệu trả về từ DB gán vào thuộc tính của NameModel
+_ View 
+    Thực hiện gọi html,css,js để hiển thị dữ liệu trả về từ NameController
+    add
+    list 
+    edit
+config.php: Sẽ cấu hình về servername,username,password,dbname => khách hàng sẽ cấu hình trong file này khi bàn giao source cho họ
+connectDB.php: file để tạo $conn cấu hình kết nối với database
+index.php : Là router gọi trên URL trình duyệt sẽ tự gọi NameController, phương thức, View tương ứng

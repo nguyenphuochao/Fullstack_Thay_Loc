@@ -34,8 +34,8 @@ class SubjectRepository
         global $conn;
         $name = $data["name"];
         $number_of_credit = $data["number_of_credit"];
-        $sql = "INSERT INTO subject(name,number_of_creadit)
-        VALUES('$name',$number_of_credit)";
+        $sql = "INSERT INTO subject(name, number_of_credit)
+        VALUES('$name', $number_of_credit)";
         if ($conn->query($sql)) {
             return true;
         }

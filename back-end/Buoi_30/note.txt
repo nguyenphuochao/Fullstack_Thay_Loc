@@ -1,0 +1,1 @@
+Đối với form sumit thì tham số ở action không có ý nghĩa với GET, còn POST thì oke

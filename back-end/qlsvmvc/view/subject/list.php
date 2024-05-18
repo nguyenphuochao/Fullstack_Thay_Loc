@@ -1,8 +1,8 @@
 <?php require "layout/header.php" ?>
 <h1>Danh sách Môn Học</h1>
-<a href="add.html" class="btn btn-info">Add</a>
-<form action="list.html" method="GET">
-	<label class="form-inline justify-content-end">Tìm kiếm: <input type="search" name="search" class="form-control" value="">
+<a href="/?c=subject&a=add" class="btn btn-info">Add</a>
+<form action="/" method="GET">
+	<label class="form-inline justify-content-end">Tìm kiếm: <input type="search" name="search" class="form-control" value="<?= $search ?>">
 		<button class="btn btn-danger">Tìm</button>
 	</label>
 	<input type="hidden" name="c" value="subject">
@@ -26,8 +26,8 @@
 				<td><?= $subject->id ?></td>
 				<td><?= $subject->name ?></td>
 				<td><?= $subject->number_of_credit ?></td>
-				<td><a href="edit.html">Sửa</a></td>
-				<td><a class="delete" data="1" type="subject" href="list.html">Xóa</a></td>
+				<td><a href="/?c=subject&a=edit&id=<?= $subject->id ?>">Sửa</a></td>
+				<td><a class="btn btn-danger btn-sm delete" data-url="/?c=subject&a=delete&id=<?= $subject->id ?>">Xóa</a></td>
 			</tr>
 		<?php endforeach ?>
 	</tbody>

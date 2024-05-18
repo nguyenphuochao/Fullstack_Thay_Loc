@@ -1,0 +1,3 @@
+jquery validation
+session & cookie
+JWT
