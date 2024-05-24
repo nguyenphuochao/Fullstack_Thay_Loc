@@ -1,0 +1,14 @@
+Thực hành dự án godashop PHP MVC
+Xây dựng cấu trúc cho dự án
+
+admin/ : phần quản trị
+service/
+site/ :phần giao diện khách hàng
+   controller/
+   layout/
+   public
+   view/
+   index.html
+upload/
+bootstrap.php
+index.php

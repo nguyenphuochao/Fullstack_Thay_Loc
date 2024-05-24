@@ -1,0 +1,5 @@
+https://erdplus.com/ : Web vẽ lược đồ thực thể quan hệ
+
+ERD: Entity Relationship diagram (Lược đồ thực thể quan hệ)
+
+Sử dụng tool Navicat
