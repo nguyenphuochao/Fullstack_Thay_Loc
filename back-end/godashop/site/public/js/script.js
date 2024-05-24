@@ -10,7 +10,7 @@ function closeMenuMobile() {
 
 $(function () {
     // Tìm kiếm và sắp xếp sản phẩm
-    $("#sort-select").change(function (event) { 
+    $("#sort-select").change(function (event) {
         var str_param = getUpdatedParam("sort", $(this).val());
         window.location.href = "index.php?" + str_param;
     });
@@ -169,19 +169,19 @@ function onSignIn(googleUser) {
 
 // Cập nhật giá trị của 1 param cụ thể
 function getUpdatedParam(k, v) {//sort, price-asc
-    var params={};
+    var params = {};
     //params = {"c":"proudct", "category_id":"5", "sort": "price-desc"}
     // window.location.search = "?c=product&price-range=200000-300000&sort=price-desc"
     window.location.search
-      .replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
-        params[key] = value;
-        // alert(str);
-        // alert(key);
-        // alert(value);
+        .replace(/[?&]+([^=&]+)=([^&]*)/gi, function (str, key, value) {
+            params[key] = value;
+            // alert(str);
+            // alert(key);
+            // alert(value);
 
-      }
-    );
-      
+        }
+        );
+
     //{c:"proudct", category_id:"5", sort: "price-desc"}
     params[k] = v;
     if (v == "") {
@@ -196,4 +196,10 @@ function getUpdatedParam(k, v) {//sort, price-asc
         x.push(p + "=" + params[p]);
     }
     return str_param = x.join("&");//c=product&category_id=5&sort=price-asc
+}
+
+// Phân trang
+function goToPage(page) {
+    var str_param = getUpdatedParam("page", page);
+    window.location.href = "index.php?" + str_param;
 }

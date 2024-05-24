@@ -18,12 +18,12 @@
                     <div class="category">
                         <h5>Danh mục sản phẩm</h5>
                         <ul>
-                            <li class="<?=empty($category_id) ? "active" : ""?>">
+                            <li class="<?= empty($category_id) ? "active" : "" ?>">
                                 <a href="index.php?c=product" title="Tất cả sản phẩm" target="_self">Tất cả sản phẩm
                                 </a>
                             </li>
                             <?php foreach ($categories as $category) : ?>
-                                <li class="<?= !empty($category_id) && $category_id == $category->getId() ? "active" : ""?>">
+                                <li class="<?= !empty($category_id) && $category_id == $category->getId() ? "active" : "" ?>">
                                     <a href="index.php?c=product&category_id=<?= $category->getId() ?>" title="<?= $category->getName() ?>" target="_self"><?= $category->getName() ?></a>
                                 </li>
                             <?php endforeach ?>
@@ -87,13 +87,13 @@
                         <div class="pull-right">
                             <label class="left hidden-xs" for="sort-select">Sắp xếp: </label>
                             <select id="sort-select">
-                                <option value="" <?=empty($sort) ? "selected" : "" ?>>Mặc định</option>
-                                <option value="price-asc" <?=$sort == "price-asc" ? "selected" : ""?>>Giá tăng dần</option>
-                                <option value="price-desc" <?=$sort == "price-desc" ? "selected" : ""?>>Giá giảm dần</option>
-                                <option value="alpha-asc" <?=$sort == "alpha-asc" ? "selected" : ""?>>Từ A-Z</option>
-                                <option value="alpha-desc" <?=$sort == "alpha-desc" ? "selected" : ""?>>Từ Z-A</option>
-                                <option value="created-asc" <?=$sort == "created-asc" ? "selected" : ""?>>Cũ đến mới</option>
-                                <option value="created-desc" <?=$sort == "created-desc" ? "selected" : ""?>>Mới đến cũ</option>
+                                <option value="" <?= empty($sort) ? "selected" : "" ?>>Mặc định</option>
+                                <option value="price-asc" <?= $sort == "price-asc" ? "selected" : "" ?>>Giá tăng dần</option>
+                                <option value="price-desc" <?= $sort == "price-desc" ? "selected" : "" ?>>Giá giảm dần</option>
+                                <option value="alpha-asc" <?= $sort == "alpha-asc" ? "selected" : "" ?>>Từ A-Z</option>
+                                <option value="alpha-desc" <?= $sort == "alpha-desc" ? "selected" : "" ?>>Từ Z-A</option>
+                                <option value="created-asc" <?= $sort == "created-asc" ? "selected" : "" ?>>Cũ đến mới</option>
+                                <option value="created-desc" <?= $sort == "created-desc" ? "selected" : "" ?>>Mới đến cũ</option>
                             </select>
                         </div>
                     </div>
@@ -107,10 +107,15 @@
                 </div>
                 <!-- Paging -->
                 <ul class="pagination pull-right">
-                    <li class="active"><a href="javascript:void(0)" onclick="goToPage(1)">1</a></li>
-                    <li class=""><a href="javascript:void(0)" onclick="goToPage(2)">2</a></li>
-                    <li class=""><a href="javascript:void(0)" onclick="goToPage(3)">3</a></li>
-                    <li><a href="javascript:void(0)" onclick="goToPage(2)">&raquo;</a></li>
+                    <?php if($page != 1) : ?>
+                        <li><a href="javascript:void(0)" onclick="goToPage(<?= $page - 1 ?>)"><<</a></li>
+                    <?php endif; ?>
+                    <?php for ($i = 1; $i <= $pageNumber; $i++) : ?>
+                        <li class="<?=$page == $i ? "active" : ""?>"><a href="javascript:void(0)" onclick="goToPage(<?= $i; ?>)"><?= $i; ?></a></li>
+                    <?php endfor ?>
+                    <?php if($page != $pageNumber) : ?>
+                        <li><a href="javascript:void(0)" onclick="goToPage(<?= $page + 1 ?>)">>></a></li>
+                    <?php endif; ?>
                 </ul>
                 <!-- End paging -->
             </div>

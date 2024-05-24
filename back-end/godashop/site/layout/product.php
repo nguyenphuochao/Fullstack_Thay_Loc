@@ -4,7 +4,7 @@
     </div>
     <div class="product-meta">
         <h5 class="name">
-            <a class="product-name" href="chi-tiet-san-pham.html" title="Kem làm trắng da 5 trong 1 Beaumore Secret Whitening Cream"><?= $product->getName() ?></a>
+            <a class="product-name" href="index.php?c=product&a=show&id=<?= $product->getId() ?>" title="Kem làm trắng da 5 trong 1 Beaumore Secret Whitening Cream"><?= $product->getName() ?></a>
         </h5>
         <div class="product-item-price">
             <?php if ($product->getPrice() != $product->getSalePrice()) : ?>
@@ -20,7 +20,7 @@
             </a>
         </div>
         <div class="quickview icon">
-            <a class="btn btn-outline-inverse" href="chi-tiet-san-pham.html" title="Xem nhanh">
+            <a class="btn btn-outline-inverse" href="index.php?c=product&a=show&id=<?= $product->getId() ?>" title="Xem nhanh">
                 Xem chi tiết <i class="fa fa-eye"></i>
             </a>
         </div>

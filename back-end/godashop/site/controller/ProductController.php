@@ -6,7 +6,7 @@ class ProductController
         $productRepository = new ProductRepository();
         $categoryRepository = new CategoryRepository();
         $item_per_page = 9;
-        $page = 1;
+        $page = $_GET["page"] ?? 1;
         $conds = [];
         $sorts = [];
         $categoryName = "Tất cả sản phẩm";
@@ -67,11 +67,15 @@ class ProductController
         $products = $productRepository->getBy($conds, $sorts, $page, $item_per_page);
 
         // Hiển thị phân trang
-        $totalProducts = $productRepository->getBy($conds,$sorts);
+        $totalProducts = $productRepository->getBy($conds, $sorts);
         $pageNumber = ceil(count($totalProducts) / $item_per_page);
 
         // Hiển thị danh mục
         $categories = $categoryRepository->getAll();
         require "view/product/index.php";
+    }
+    function show()
+    {
+        require "view/product/show.php";
     }
 }
