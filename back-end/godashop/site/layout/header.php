@@ -35,7 +35,7 @@
                 <a href="chinh-sach-doi-tra.html">Chính sách đổi trả</a>
                 <a href="chinh-sach-thanh-toan.html">Chính sách thanh toán</a>
                 <a href="chinh-sach-giao-hang.html">Chính sách giao hàng</a>
-                <a href="lien-he.html">Liên hệ</a>
+                <a class="<?= $c == 'contact' ? 'active' : '' ?>" href="index.php?c=contact&a=form">Liên hệ</a>
             </div>
             <div class="row">
                 <div class="hidden-lg hidden-md col-sm-2 col-xs-1">
@@ -79,19 +79,20 @@
                         <p class="hotline-phone"><span><strong>Hotline: </strong><a href="tel:0932.538.468">0932.538.468</a></span></p>
                         <p class="hotline-email"><span><strong>Email: </strong><a href="mailto:nguyenhuulocla2006@gmail.com">nguyenhuulocla2006@gmail.com</a></span></p>
                     </div>
+                    <!-- Search form -->
                     <form class="header-form" action="">
                         <div class="input-group">
-                            <input type="search" class="form-control search" placeholder="Nhập từ khóa tìm kiếm" name="search" autocomplete="off" value="">
+                            <input type="search" class="form-control search" placeholder="Nhập từ khóa tìm kiếm" name="search" autocomplete="off" value="<?= $search ?? null ?>">
                             <div class="input-group-btn">
                                 <button class="btn bt-search bg-color" type="submit"><i class="fa fa-search" style="color:#fff"></i>
                                 </button>
                             </div>
                             <input type="hidden" name="c" value="product">
-                            <input type="hidden" name="a" value="list">
                         </div>
                         <div class="search-result">
                         </div>
                     </form>
+                    <!-- End Search Form -->
                 </div>
             </div>
         </div>
@@ -108,7 +109,7 @@
                 <li><a href="chinh-sach-doi-tra.html">Chính sách đổi trả</a></li>
                 <li><a href="chinh-sach-thanh-toan.html">Chính sách thanh toán</a></li>
                 <li><a href="chinh-sach-giao-hang.html">Chính sách giao hàng</a></li>
-                <li><a href="lien-he.html">Liên hệ</a></li>
+                <li class="<?= $c == 'contact' ? 'active' : '' ?>"><a href="index.php?c=contact&a=form">Liên hệ</a></li>
             </ul>
             <span class="hidden-lg hidden-md experience">Trải nghiệm cùng sản phẩm của Goda</span>
             <ul class="nav navbar-nav navbar-right">

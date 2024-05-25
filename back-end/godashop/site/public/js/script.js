@@ -9,6 +9,56 @@ function closeMenuMobile() {
 }
 
 $(function () {
+
+    // Bình luận, đánh giá sản phẩm
+    $(".form-comment").submit(function (e) { 
+        e.preventDefault(); // ngăn chặn sự kiện submit làm load trang
+        var form_data = $(this).serialize(); // tự lấy tất cả data từ input form
+        $.ajax({
+            type: "POST", // dùng post, get gì cũng dc vì ajax ko share
+            url: "index.php?c=product&a=storeComment",
+            data: form_data,
+            success: function (response) {
+                $(".comment-list").html(response); // cập nhật vào giao diện class = "comment-list"
+                // loads cái thư viện rating
+                $('main .product-detail .product-description .answered-rating-input').rating({
+                    min: 0,
+                    max: 5,
+                    step: 1,
+                    size: 'md',
+                    stars: "5",
+                    showClear: false,
+                    showCaption: false,
+                    displayOnly: false,
+                    hoverEnabled: true
+                });
+            }
+
+        });        
+    });
+
+    // Ajax search
+    var timeout = null;
+    $("header form.header-form .search").keyup(function (event) {
+        /* Act on the event */
+        clearTimeout(timeout);
+        var pattern = $(this).val();
+        $(".search-result").html("");
+        timeout = setTimeout(function () {
+            if (pattern) {
+                $.ajax({
+                    url: 'index.php?c=product&a=ajaxSearch',
+                    type: 'GET',
+                    data: { pattern: pattern },
+                })
+                    .done(function (data) {
+                        $(".search-result").html(data);
+                        $(".search-result").show();
+                    });
+            }
+        }, 500);
+    });
+
     // Tìm kiếm và sắp xếp sản phẩm
     $("#sort-select").change(function (event) {
         var str_param = getUpdatedParam("sort", $(this).val());
@@ -136,7 +186,7 @@ $(function () {
 
     // Hiển thị carousel for relative products
     $('main .product-detail .product-related .owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 10,
         nav: true,
         dots: false,
