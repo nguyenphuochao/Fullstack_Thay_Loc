@@ -52,12 +52,29 @@
                 </div>
                 <div class="col-md-6 col-sm-10 col-xs-11">
                     <ul class="list-inline pull-right top-right">
-                        <li class="account-login">
-                            <a href="javascript:void(0)" class="btn-register">Đăng Ký</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="btn-login">Đăng Nhập </a>
-                        </li>
+                        <!-- Dùng $_SESSION["email"] check đăng nhập giống auth:check trong laravel -->
+                        <?php if (!empty($_SESSION["email"])) : ?>
+                            <li class="account-login">
+                                <a href="don-hang-cua-toi.html" class="btn-logout">Đơn hàng của tôi</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="btn-account dropdown-toggle" data-toggle="dropdown" id="dropdownMenu"><?= $_SESSION["fullname"] ?></a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+                                    <li><a href="thong-tin-tai-khoan.html">Thông tin tài khoản</a></li>
+                                    <li><a href="dia-chi-giao-hang-mac-dinh.html">Địa chỉ giao hàng</a></li>
+                                    <li><a href="don-hang-cua-toi.html">Đơn hàng của tôi</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="index.php?c=login&a=logout">Thoát</a></li>
+                                </ul>
+                            </li>
+                        <?php else : ?>
+                            <li class="account-login">
+                                <a href="javascript:void(0)" class="btn-register">Đăng Ký</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="btn-login">Đăng Nhập </a>
+                            </li>
+                        <?php endif ?>
                     </ul>
                 </div>
             </div>
@@ -117,3 +134,22 @@
             </ul>
         </div>
     </nav>
+    <?php
+    $message = ""; // tạo biến $message để check
+    if (!empty($_SESSION["success"])) {
+        $message = $_SESSION["success"];
+        $messageClass = "alert-success";
+        // Xóa phần tử dựa vào key
+        unset($_SESSION["success"]); // sài xong xóa lun session
+    } else if (!empty($_SESSION["error"])) {
+        $message = $_SESSION["error"];
+        $messageClass = "alert-danger";
+        // Xóa phần tử dựa vào key
+        unset($_SESSION["error"]); // sài xong xóa lun session
+    }
+    ?>
+    <?php if ($message) { ?>
+        <div class="alert <?= $messageClass ?> mt-4">
+            <?= $message ?>
+        </div>
+    <?php } ?>

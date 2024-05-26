@@ -1,0 +1,4 @@
+Xây dựng chức năng đăng kí
+Xây dựng chức năng đăng nhập
+Cài google recaptcha
+Gửi mail

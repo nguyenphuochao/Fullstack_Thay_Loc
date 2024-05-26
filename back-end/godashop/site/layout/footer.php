@@ -74,7 +74,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title text-center">Đăng ký</h3>
             </div>
-            <form action="#" method="POST" role="form">
+            <form action="index.php?c=register&a=create" method="POST" role="form">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" name="fullname" placeholder="Họ và tên" required oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')" oninput="this.setCustomValidity('')">
@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <input type="password" class="form-control" name="re-password" placeholder="Nhập lại mật khẩu" required autocomplete="off" autosave="off" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" oninvalid="this.setCustomValidity('Vui lòng nhập ít nhất 8 ký tự: số, chữ hoa, chữ thường')" oninput="this.setCustomValidity('')">
                     </div>
-                    <div class="form-group g-recaptcha" data-sitekey="6Lcj07oUAAAAALAHcj_WdDa7Vykqzui3mSA5SIoe"></div>
+                    <div class="form-group g-recaptcha" data-sitekey="<?=GOOGLE_RECAPTCHA_SITE?>"></div>
                     <input type="hidden" name="reference" value="">
                 </div>
                 <div class="modal-footer">
@@ -118,7 +118,7 @@
                     <a class="btn btn-primary facebook-login" href="#"><i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook</a>
                 </div>
             </div>
-            <form action="#" method="POST" role="form">
+            <form action="index.php?c=login&a=form" method="POST" role="form">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="email" name="email" class="form-control" placeholder="Email" required>
@@ -156,7 +156,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="reference" value="">
-                    <button type="submit" class="btn btn-primary">GỬI</button><br>
+                    <button type="submit" class="btn btn-primary">Gửi</button><br>
                 </div>
             </form>
         </div>
