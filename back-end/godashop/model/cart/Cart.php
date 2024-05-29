@@ -7,8 +7,8 @@ class Cart
 
 	function __construct($items = array(), $total_price = 0, $total_product_number = 0){
 		$this->items = $items;
-		$this->total_price = $total_price;
-		$this->total_product_number = $total_product_number;
+		$this->total_price = $total_price; // tổng tiền
+		$this->total_product_number = $total_product_number; // tổng số sản phẩm
 	}
 
 	function getItems(){
@@ -54,7 +54,6 @@ class Cart
 	}
 
 	protected function addItem($item) {
-		global $router;
 		$product_id = $item["product_id"];
 		$img = $item["img"];
 		$name = $item["name"];
@@ -69,7 +68,6 @@ class Cart
 				"qty" => $qty,
 				"unit_price" => $unit_price, 
 				"total_price" => $total_price,
-				"product_url" => $router->generate("product-detail", ['slugName' => slugify($name), "id" => $product_id])
 			);
 
 		}

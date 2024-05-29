@@ -7,11 +7,118 @@ function closeMenuMobile() {
     $(".menu-mb").width(0);
     $(".btn-menu-mb").show("slow");
 }
-
+// loads hết tất cả html mới chạy code bên trong
 $(function () {
 
+    // Thêm sản phẩm vào giỏ hàng
+    $("main .buy").click(function (event) {
+        var product_id = $(this).attr("product-id");
+        $.ajax({
+            url: 'index.php?c=cart&a=add',
+            type: 'GET',
+            data: { product_id: product_id, qty: 1 }
+        })
+            .done(function (data) {
+                // console.log(data);
+                displayCart(data);
+            });
+    });
+
+    //Hiển thị cart khi load xong trang web
+    $.ajax({
+        url: 'index.php?c=cart&a=display',
+        type: 'GET'
+    })
+    .done(function(data) {
+        displayCart(data);
+        
+    });
+
+    // Validate jquery form đăng kí
+    $(".form-register").validate({ // gọi form validate
+        // các qui tắc validate
+        rules: {
+            // simple rule, converted to {required:true}
+            fullname: {
+                required: true,
+                maxlength: 50,
+                regex: /^[a-zA￾ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i,
+            },
+            mobile: {
+                required: true,
+                regex: /^0([0-9]{9,9})$/,
+            },
+            email: {
+                required: true,
+                email: true,
+                maxlength: 50,
+                remote: "/site/index.php?c=register&a=notExistingEmail"
+            },
+            password: {
+                required: true,
+                regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+            },
+            password_confirmation: {
+                required: true,
+                equalTo: "[name=password]"
+            },
+            hiddenRecaptcha: {
+                //true: lỗi
+                //false: passed
+                required: function () {
+                    if (grecaptcha.getResponse() == '') {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+
+        },
+        // custom message
+        messages: {
+            fullname: {
+                required: "Vui lòng nhập họ tên",
+                maxlength: "Vui lòng nhập không quá 50 kí tự",
+                regex: "Vui lòng nhập đúng định dạng họ và tên tiếng việt"
+            },
+            mobile: {
+                required: "Vui lòng nhập số điện thoại",
+                regex: "Vui lòng nhập 10 con số bắt đầu từ 0"
+            },
+            email: {
+                required: "Vui lòng nhập email",
+                maxlength: "Vui lòng nhập không quá 50 kí tự",
+                email: "Vui lòng nhập đúng định dạng email. vd:a@gmail.com",
+                remote: "Email đã tồn tại"
+            },
+            password: {
+                required: "Vui lòng nhập mật khẩu",
+                regex: "Mật khẩu ít nhất 8 kí tự, bao gồm số, ký tự, đặc biệt, chữ hoa, chữ thường"
+            },
+            password_confirmation: {
+                required: "Vui lòng nhập lại mật khẩu",
+                equaTo: "Mật khẩu nghập lại chưa khớp"
+            },
+            hiddenRecaptcha: {
+                required: "Vui lòng xác nhận Google reCAPTCHA"
+            }
+        },
+    });
+    // hàm này có sẵn để check cái regex
+    $.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            if (regexp.constructor != RegExp) regexp = new RegExp(regexp);
+            else if (regexp.global) regexp.lastIndex = 0;
+            return this.optional(element) || regexp.test(value);
+        },
+        "Please check your input."
+    );
+    // Validate jquery form đăng nhập
+
     // Bình luận, đánh giá sản phẩm
-    $(".form-comment").submit(function (e) { 
+    $(".form-comment").submit(function (e) {
         e.preventDefault(); // ngăn chặn sự kiện submit làm load trang
         var form_data = $(this).serialize(); // tự lấy tất cả data từ input form
         $.ajax({
@@ -34,7 +141,7 @@ $(function () {
                 });
             }
 
-        });        
+        });
     });
 
     // Ajax search
@@ -252,4 +359,80 @@ function getUpdatedParam(k, v) {//sort, price-asc
 function goToPage(page) {
     var str_param = getUpdatedParam("page", page);
     window.location.href = "index.php?" + str_param;
+}
+
+// Hiển thị cart
+function displayCart(data) {
+    //chuỗi chuỗi dạng object thành object
+    var cart = JSON.parse(data);
+    console.log(cart);
+    
+    var total_product_number = cart.total_product_number;
+    $(".btn-cart-detail .number-total-product").html(total_product_number);
+
+    var total_price = cart.total_price;
+    $("#modal-cart-detail .price-total").html(number_format(total_price)+"₫");
+    var items = cart.items;
+    var rows = "";
+    for (let i in items) {
+        let item = items[i];
+        var row = 
+                '<hr>'+
+                '<div class="clearfix text-left">'+   
+                    '<div class="row">'+             
+                        '<div class="col-sm-6 col-md-1">'+
+                            '<div>'+
+                                '<img class="img-responsive" src="../upload/' + item.img + '" alt="' + item.name + ' ">'+             
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col-sm-6 col-md-3">'+
+                            '<a class="product-name" href="index.php?c=product&a=detail&id='+ item.product_id +'">' + item.name + '</a>'+
+                        '</div>'+
+                        '<div class="col-sm-6 col-md-2">'+
+                            '<span class="product-item-discount">' + number_format(Math.round(item.unit_price)) + '₫</span>'+
+                        '</div>'+
+                        '<div class="col-sm-6 col-md-3">'+
+                            '<input type="hidden" value="1">'+
+                            '<input type="number" onchange="updateProductInCart(this,'+ item.product_id +')" min="1" value="' + item.qty + '">'+
+                        '</div>'+
+                        '<div class="col-sm-6 col-md-2">'+
+                            '<span>' + number_format(Math.round(item.total_price)) + '₫</span>'+
+                        '</div>'+
+                        '<div class="col-sm-6 col-md-1">'+
+                            '<a class="remove-product" href="javascript:void(0)" onclick="deleteProductInCart('+ item.product_id +')">'+
+                                '<span class="glyphicon glyphicon-trash"></span>'+
+                            '</a>'+
+                        '</div>'+ 
+                    '</div>'+                                                   
+                '</div>';
+        rows += row; 
+    }
+    $("#modal-cart-detail .cart-product").html(rows);
+}
+
+// Thay đổi số lượng sản phẩm trong giỏ hàng
+function updateProductInCart(self, product_id) {
+    var qty = $(self).val();
+    $.ajax({
+        url: 'index.php?c=cart&a=update',
+        type: 'GET',
+        data: {product_id: product_id, qty: qty}
+    })
+    .done(function(data) {
+        displayCart(data);
+        
+    });
+}
+
+// Xóa sản phẩm trong giỏ hàng
+function deleteProductInCart(product_id) {
+    $.ajax({
+        url: 'index.php?c=cart&a=delete',
+        type: 'GET',
+        data: {product_id: product_id}
+    })
+    .done(function(data) {
+        displayCart(data);
+        
+    });
 }

@@ -13,3 +13,5 @@ define("GOOGLE_RECAPTCHA_SECRET", "6LcUVugpAAAAALcFDs32Tc1LRYLQscv90cL1Dxr_");
 define("SMTP_USERNAME", "nguyenphuochao456@gmail.com");
 define("SMTP_SECRET", "aqehzdwwqqrxdlwz");
 define("SMTP_HOST", "smtp.gmail.com");
+
+define("JWT_KEY", "godashop-key");

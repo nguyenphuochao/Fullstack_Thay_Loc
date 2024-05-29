@@ -18,6 +18,7 @@
     <script type="text/javascript" src="public/vendor/star-rating/js/star-rating.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="public/vendor/format/number_format.js"></script>
+    <script src="public/vendor/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
     <script type="text/javascript" src="public/js/script.js"></script>
 </head>
 
@@ -130,7 +131,7 @@
             </ul>
             <span class="hidden-lg hidden-md experience">Trải nghiệm cùng sản phẩm của Goda</span>
             <ul class="nav navbar-nav navbar-right">
-                <li class="cart"><a href="javascript:void(0)" class="btn-cart-detail" title="Giỏ Hàng"><i class="fa fa-shopping-cart"></i> <span class="number-total-product">6</span></a></li>
+                <li class="cart"><a href="javascript:void(0)" class="btn-cart-detail" title="Giỏ Hàng"><i class="fa fa-shopping-cart"></i> <span class="number-total-product"></span></a></li>
             </ul>
         </div>
     </nav>

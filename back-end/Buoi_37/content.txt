@@ -1,0 +1,7 @@
+- Đăng kí tên miền
+- Đăng kí host
+- Upload source code lên internet
+- Kích hoạt tài khoản đăng kí
+- Sử dụng JWT mã hóa code
+- Validation jquery form đăng kí, đăng nhập
+- Xây dựng chức năng giỏ hàng

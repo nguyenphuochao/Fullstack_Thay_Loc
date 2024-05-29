@@ -43,3 +43,23 @@ require_once "../model/newsletter/NewsLetterRepository.php";
 
 // Gửi mail
 require_once "../service/MailService.php";
+
+//godashop.com
+function get_host_name() {
+	return $_SERVER['HTTP_HOST'];
+}
+//http://
+function getProtocol() {
+	$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+	return $protocol;
+}
+
+//http://godashop.com
+function get_domain(){
+	$protocol = getProtocol();
+    return $protocol . $_SERVER['HTTP_HOST'];
+}
+//http://godashop.com/site
+function get_domain_site(){
+    return get_domain() . "/site";
+}

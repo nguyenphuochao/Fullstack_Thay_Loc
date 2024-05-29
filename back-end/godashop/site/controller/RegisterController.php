@@ -1,4 +1,8 @@
 <?php
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 class RegisterController
 {
     // đăng kí tài khoản
@@ -9,7 +13,7 @@ class RegisterController
         $remoteIp = "172.0.0.1";
         $gRecaptchaResponse = $_POST["g-recaptcha-response"];
         $recaptcha = new \ReCaptcha\ReCaptcha($secret);
-        $resp = $recaptcha->setExpectedHostname('godashop.com')
+        $resp = $recaptcha->setExpectedHostname(get_host_name())
             ->verify($gRecaptchaResponse, $remoteIp);
         if (!$resp->isSuccess()) {
             $errors = $resp->getErrorCodes();
@@ -36,7 +40,14 @@ class RegisterController
             // Gửi mail kích hoạt tài khoản
             $email = $_POST["email"];
             $mailerServer = new MailService();
-            $activeUrl = "godashop.com/site/index.php?c=register&a=active&code=123456";
+            // Use JWT
+            $key = JWT_KEY;
+            $payload = [
+                "email" => $email,
+            ];
+            $code = JWT::encode($payload, $key, 'HS256');
+
+            $activeUrl = get_domain_site() . "/index.php?c=register&a=active&code=$code";
             $content = "
                 Chào $email <br>
                 Vui lòng click vào link bên dưới kích hoạt tài khoản <br>
@@ -51,6 +62,33 @@ class RegisterController
     // kích hoạt tài khoản
     function active()
     {
+        $code = $_GET["code"];
+        try {
+            $decoded = JWT::decode($code, new Key(JWT_KEY, 'HS256'));
+            $email = $decoded->email;
+            $customerRepository = new CustomerRepository();
+            $customer = $customerRepository->findEmail($email);
+            if (!$customer) {
+                $_SESSION["error"] = "Email $email không tồn tại";
+                header("Location: /");
+            }
+            $customer->setIsActive(1); // = 1 là kích hoạt
+            $customerRepository->update($customer);
+            $_SESSION["success"] = "Tài khoản của bạn đã được active";
+            // cho phép login lun
+            $_SESSION["email"] = $email;
+            $_SESSION["fullname"] = $customer->getName();
+            header("Location: /");
+        } catch (Exception $e) {
+            echo "You try hack";
+        }
+    }
+    // Kiểm tra tồn tại email
+    function notExistingEmail()
+    {
+        $email = $_GET["email"];
         $customerRepository = new CustomerRepository();
+        $customer = $customerRepository->findEmail($email);
+        echo $customer ? "false" : "true";
     }
 }
