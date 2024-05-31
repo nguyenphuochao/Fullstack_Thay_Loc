@@ -15,7 +15,7 @@ class CartStorage {
 			//update session;
 			$_SESSION["cart"] = $_COOKIE["cart"];
 		}
-		//serialize: chuyền stirng to object
+		//unserialize: chuyển string to object
 		$cart = unserialize($_SESSION["cart"]);
 		return $cart;
 	}

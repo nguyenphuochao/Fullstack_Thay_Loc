@@ -61,8 +61,8 @@
                             <li>
                                 <a href="javascript:void(0)" class="btn-account dropdown-toggle" data-toggle="dropdown" id="dropdownMenu"><?= $_SESSION["fullname"] ?></a>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
-                                    <li><a href="thong-tin-tai-khoan.html">Thông tin tài khoản</a></li>
-                                    <li><a href="dia-chi-giao-hang-mac-dinh.html">Địa chỉ giao hàng</a></li>
+                                    <li><a href="index.php?c=customer&a=info">Thông tin tài khoản</a></li>
+                                    <li><a href="index.php?c=customer&a=shipping">Địa chỉ giao hàng</a></li>
                                     <li><a href="don-hang-cua-toi.html">Đơn hàng của tôi</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="index.php?c=login&a=logout">Thoát</a></li>

@@ -5,3 +5,6 @@
 - Sử dụng JWT mã hóa code
 - Validation jquery form đăng kí, đăng nhập
 - Xây dựng chức năng giỏ hàng
+- Sự khác nhau giữa Ajax và JsonP
+    + Ajax dùng nội bộ sourse 
+    + JsonP dùng truy cập source bên ngoài

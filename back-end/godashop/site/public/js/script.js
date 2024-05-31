@@ -10,6 +10,78 @@ function closeMenuMobile() {
 // loads hết tất cả html mới chạy code bên trong
 $(function () {
 
+     // Thay đổi province
+     $("main .province").change(function(event) {
+        /* Act on the event */
+        var province_id = $(this).val();
+        if (!province_id) {
+            updateSelectBox(null, "main .district");
+            updateSelectBox(null, "main .ward");
+            return;
+        }
+
+        $.ajax({
+            url: 'index.php?c=address&a=getDistricts',
+            type: 'GET',
+            data: {province_id: province_id}
+        })
+        .done(function(data) {
+            updateSelectBox(data, "main .district");
+            updateSelectBox(null, "main .ward");
+        });
+
+        if ($("main .shipping-fee").length) {
+            $.ajax({
+                url: 'index.php?c=address&a=getShippingFee',
+                type: 'GET',
+                data: {province_id: province_id}
+            })
+            .done(function(data) {
+                //update shipping fee and total on UI
+                let shipping_fee = Number(data);
+                let payment_total = Number($("main .payment-total").attr("data")) + shipping_fee;
+
+                $("main .shipping-fee").html(number_format(shipping_fee) + "₫");
+                $("main .payment-total").html(number_format(payment_total) + "₫");
+            });
+        }
+    });
+
+    // Thay đổi district
+    $("main .district").change(function(event) {
+        /* Act on the event */
+        var district_id = $(this).val();
+        if (!district_id) {
+            updateSelectBox(null, "main .ward");
+            return;
+        }
+
+        $.ajax({
+            url: 'index.php?c=address&a=getWards',
+            type: 'GET',
+            data: {district_id: district_id}
+        })
+        .done(function(data) {
+            updateSelectBox(data, "main .ward");
+        });
+    });
+
+    // Thêm sản phẩm vào giỏ hàng ở trang chi tiết
+    $("main .buy-in-detail").click(function(event) {
+        /* Act on the event */
+        var qty = $(this).prev("input").val();
+        var product_id = $(this).attr("product-id");
+        $.ajax({
+            url: 'index.php?c=cart&a=add',
+            type: 'GET',
+            data: {product_id: product_id, qty: qty}
+        })
+        .done(function(data) {
+            displayCart(data);
+            
+        });
+    });
+
     // Thêm sản phẩm vào giỏ hàng
     $("main .buy").click(function (event) {
         var product_id = $(this).attr("product-id");
@@ -283,12 +355,12 @@ $(function () {
 
     $('input[name=checkout]').click(function (event) {
         /* Act on the event */
-        window.location.href = "dat-hang.html";
+        window.location.href = "index.php?c=payment&a=checkout";
     });
 
     $('input[name=back-shopping]').click(function (event) {
         /* Act on the event */
-        window.location.href = "san-pham.html";
+        window.location.href = "index.php?c=home";
     });
 
     // Hiển thị carousel for relative products
@@ -435,4 +507,17 @@ function deleteProductInCart(product_id) {
         displayCart(data);
         
     });
+}
+
+// Cập nhật các option cho thẻ select
+function updateSelectBox(data, selector) {
+    var items = JSON.parse(data);
+    $(selector).find('option').not(':first').remove();
+    if (!data) return;
+    for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        let option = '<option value="' + item.id + '"> ' + item.name + '</option>';
+        $(selector).append(option);
+    } 
+    
 }

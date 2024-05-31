@@ -1,5 +1,5 @@
 <?php
-class OrderRepository{
+class OrderRepository extends BaseRepository{
 	protected function fetchAll($condition = null, $sort = null)
 	{
 		global $conn;
