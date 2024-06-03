@@ -15,3 +15,5 @@ define("SMTP_SECRET", "aqehzdwwqqrxdlwz");
 define("SMTP_HOST", "smtp.gmail.com");
 
 define("JWT_KEY", "godashop-key");
+
+define("SHOP_OWNER", "nguyenphuochao456@gmail.com");

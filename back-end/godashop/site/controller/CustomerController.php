@@ -45,4 +45,26 @@ class CustomerController
         require "layout/variable_address.php";
         require "view/customer/shipping.php";
     }
+    function updateShipping()
+    {
+        /* 
+        * khởi tạo đối tượng
+        * tìm đối tượng theo email cần gán giá trị
+        * gán các giá trị cho các thuộc tính
+        * gọi hàm update
+        */
+        $customerRepository = new CustomerRepository();
+        $customer = $customerRepository->findEmail($_SESSION["email"]);
+        $customer->setShippingName($_POST["fullname"]);
+        $customer->setShippingMobile($_POST["mobile"]);
+        $customer->setWardId($_POST["ward"]);
+        $customer->setHousenumberStreet($_POST["address"]);
+        if ($customerRepository->update($customer)) {
+            $_SESSION["fullname"] = $customer->getName();
+            $_SESSION["success"] = "Đã cập nhật địa chỉ giao hàng thành công";
+        } else {
+            $_SESSION["error"] = $customerRepository->getError();
+        }
+        header("location: index.php?c=customer&a=shipping");
+    }
 }

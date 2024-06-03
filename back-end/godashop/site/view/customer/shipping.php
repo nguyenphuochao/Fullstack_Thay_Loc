@@ -18,8 +18,11 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12">
-                        <form action="index.php?c=customer&amp;a=saveShippingAddress" method="POST" role="form">
+                        <form action="index.php?c=customer&a=updateShipping" method="POST" role="form">
                             <?php require "layout/address.php"; ?>
+                            <div class="form-group col-sm-12">
+                                <button type="submit" class="btn btn-primary pull-right">Cập nhật</button>
+                            </div>
                         </form>
                     </div>
                 </div>

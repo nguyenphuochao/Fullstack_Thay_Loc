@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-6">
                 <h4>Thông tin liên hệ</h4>
-                <form class="form-contact" action="#" method="POST">
+                <form class="form-contact" action="index.php?c=contact&a=send" method="POST">
                     <div class="form-group">
                         <input type="text" class="form-control" name="fullname" placeholder="Họ và tên" required oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')" oninput="this.setCustomValidity('')">
                     </div>
@@ -32,6 +32,11 @@
 
                             <textarea class="form-control" placeholder="Nội dung" name="content" rows="10" required></textarea>
                         </div>
+
+                        <div class="form-group col-sm-12">
+                            <div class="alert alert-success message hidden"></div>
+                        </div>
+
                         <div class="form-group col-sm-12">
                             <button type="submit" class="btn btn-sm btn-primary pull-right">Gửi</button>
                         </div>

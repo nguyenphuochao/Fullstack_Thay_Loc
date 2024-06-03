@@ -1,0 +1,17 @@
+Dựng domain có SSL(Chứng chỉ bảo mật https)
+<VirtualHost *:443>
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot "C:/xampp/htdocs/example"
+    SSLEngine on
+    SSLCertificateFile "conf/ssl.crt/server.crt"
+    SSLCertificateKeyFile "conf/ssl.key/server.key"
+    <Directory "C:/xampp/htdocs/example">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+Chức năng đăng nhập google
+Chức năng đăng nhập facebook

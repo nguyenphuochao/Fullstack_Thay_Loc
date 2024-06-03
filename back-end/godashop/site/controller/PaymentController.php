@@ -11,6 +11,7 @@ class PaymentController
         }
         $customerRepository = new CustomerRepository();
         $customer = $customerRepository->findEmail($email);
+    
         require "layout/variable_address.php";
         require "view/payment/checkout.php";
     }
