@@ -92,8 +92,7 @@
                         <input type="password" class="form-control" name="password_confirmation" placeholder="Nhập lại mật khẩu" autocomplete="off" autosave="off">
                     </div>
                     <div class="form-group g-recaptcha" data-sitekey="<?= GOOGLE_RECAPTCHA_SITE ?>"></div>
-                    <input type="text" name="hiddenRecaptcha"
-						style="opacity: 0; position: absolute; top: 0; left: 0; height: 1px; width: 1px;">
+                    <input type="text" name="hiddenRecaptcha" style="opacity: 0; position: absolute; top: 0; left: 0; height: 1px; width: 1px;">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
@@ -112,11 +111,41 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title text-center">Đăng nhập</h3>
                 <!-- Google login -->
+                <?php
+                // init configuration
+                $clientID = GOOGLE_CLIENT_ID;
+                $clientSecret = GOOGLE_CLIENT_SECRET;
+                $redirectUri =  get_domain() . $_SERVER['PHP_SELF'] . "?c=auth&a=loginGoogle";
+
+                // create Client Request to access Google API
+                $client = new Google_Client();
+                $client->setClientId($clientID);
+                $client->setClientSecret($clientSecret);
+                $client->setRedirectUri($redirectUri);
+                $client->addScope("email");
+                $client->addScope("profile");
+                $loginUrl = $client->createAuthUrl();
+                // echo $loginUrl;
+                ?>
                 <br>
                 <div class="text-center">
-                    <a class="btn btn-primary google-login" href="#"><i class="fab fa-google"></i></i> Đăng nhập bằng Google</a>
+                    <a class="btn btn-primary google-login" href="<?= $loginUrl ?>"><i class="fab fa-google"></i></i> Đăng nhập bằng Google</a>
                     <!-- Facebook login -->
-                    <a class="btn btn-primary facebook-login" href="#"><i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook</a>
+                    <?php
+                    $fb = new Facebook\Facebook([
+                        'app_id' => FACEBOOK_CLIENT_ID, // Replace {app-id} with your app id
+                        'app_secret' => FACEBOOK_CLIENT_SECRET,
+                        'default_graph_version' => 'v3.2',
+                    ]);
+
+                    $helper = $fb->getRedirectLoginHelper();
+
+                    $permissions = ['email']; // Optional permissions
+                    $callback = get_domain() . $_SERVER['PHP_SELF'] . "?c=auth&a=loginFacebook";
+                    $loginUrl = $helper->getLoginUrl($callback, $permissions);
+                    // echo $loginUrl;
+                    ?>
+                    <a class="btn btn-primary facebook-login" href="<?= $loginUrl ?>"><i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook</a>
                 </div>
             </div>
             <form action="index.php?c=login&a=form" method="POST" role="form">
@@ -149,7 +178,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title text-center">Quên mật khẩu</h3>
             </div>
-            <form action="#" method="POST" role="form">
+            <form action="index.php?c=customer&a=forgotPassword" method="POST" role="form">
                 <div class="modal-body">
                     <div class="form-group">
                         <input name="email" type="email" class="form-control" placeholder="Email" required>

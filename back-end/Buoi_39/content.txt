@@ -1,4 +1,4 @@
-Dựng domain có SSL(Chứng chỉ bảo mật https)
+- Dựng domain có SSL(Chứng chỉ bảo mật https)
 <VirtualHost *:443>
     ServerName example.com
     ServerAlias www.example.com
@@ -13,5 +13,29 @@ Dựng domain có SSL(Chứng chỉ bảo mật https)
     </Directory>
 </VirtualHost>
 
-Chức năng đăng nhập google
-Chức năng đăng nhập facebook
+- Hoặc với php 8 trở lên
+C:\xampp\apache\conf\extra\httpd-ssl.conf
+Listen 443
+<VirtualHost _default_:443>
+    DocumentRoot "C:/xampp/htdocs/Fullstack_Thay_Loc/back-end/godashop"
+    ServerName godashop.com
+    ServerAlias www.godashop.com
+    SSLEngine on
+    SSLCertificateFile "C:/xampp/apache/conf/ssl.crt/server.crt"
+    SSLCertificateKeyFile "C:/xampp/apache/conf/ssl.key/server.key"
+    <Directory "C:/xampp/htdocs/Fullstack_Thay_Loc/back-end/godashop">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+- Chức năng đăng nhập google
+https://github.com/googleapis/google-api-php-client
+
+- Chức năng đăng nhập facebook
+https://github.com/facebookarchive/php-graph-sdk
+
+- Đường dẫn đẹp
+composer require altorouter/altorouter
+https://github.com/dannyvankooten/AltoRouter

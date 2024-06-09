@@ -1,6 +1,6 @@
-Xây dựng trang thanh toán
-Xây dựng Ajax chọn thông tin thanh toán
-Chức năng đặt hàng và lưu thông tin đơn hàng xuống database
-CHức năng thông tin tài khoản
-Chức năng địa chỉ giao hàng mặc định
-Chức năng đơn hàng của tôi
+- Xây dựng trang thanh toán
+- Xây dựng Ajax chọn thông tin thanh toán
+- Chức năng đặt hàng và lưu thông tin đơn hàng xuống database
+- CHức năng thông tin tài khoản
+- Chức năng địa chỉ giao hàng mặc định
+- Chức năng đơn hàng của tôi
