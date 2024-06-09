@@ -1,4 +1,8 @@
 <?php
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 class CustomerController
 {
 
@@ -66,5 +70,76 @@ class CustomerController
             $_SESSION["error"] = $customerRepository->getError();
         }
         header("location: index.php?c=customer&a=shipping");
+    }
+
+    // quên mật khẩu
+    function forgotPassword()
+    {
+
+        $email = $_POST["email"];
+        $customerRepository = new CustomerRepository();
+        // check tồn tại email trong hệ thống
+        $customer = $customerRepository->findEmail($email);
+        if (!$customer) {
+            $_SESSION["error"] = "Email $email không tồn tại";
+            header("Location: index.php");
+            exit;
+        }
+        // Gửi mail reset password
+        $mailerServer = new MailService();
+        // Use JWT
+        $key = JWT_KEY;
+        $payload = [
+            "email" => $email,
+        ];
+
+        $code = JWT::encode($payload, $key, 'HS256');
+
+        $activeUrl = get_domain_site() . "/index.php?c=customer&a=resetPassword&code=$code";
+        $content = "
+                  Chào $email <br>
+                  Vui lòng click vào link bên dưới khôi phục tài khoản <br>
+                  <a href='$activeUrl'>Reset Password</a>
+              ";
+        $mailerServer->send($email, "Active account", $content);
+        $_SESSION["success"] = "Vui lòng kiểm tra email để khôi phục mật khẩu";
+        header("Location: index.php");
+    }
+    // form resetPassword
+    function resetPassword()
+    {
+        $code = $_GET["code"];
+        try {
+            $decoded = JWT::decode($code, new Key(JWT_KEY, 'HS256'));
+            $email = $decoded->email;
+            $customerRepository = new CustomerRepository();
+            $customer = $customerRepository->findEmail($email);
+            if (!$customer) {
+                $_SESSION["error"] = "Email $email không tồn tại";
+                header("Location: /");
+            }
+            require "view/customer/resetPassword.php";
+        } catch (Exception $e) {
+            echo "You try hack";
+        }
+    }
+    // update password
+    function updatePassword()
+    {
+        $code = $_POST["code"];
+        try {
+            $decoded = JWT::decode($code, new Key(JWT_KEY, 'HS256'));
+            $email = $decoded->email;
+            $customerRepository = new CustomerRepository();
+            $customer = $customerRepository->findEmail($email);
+            $newPassword = $_POST["password"];
+            $hashNewPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+            $customer->setPassword($hashNewPassword);
+            $customerRepository->update($customer);
+            $_SESSION["success"] = "Password reset successfully";
+            header("Location: index.php");
+        } catch (Exception $e) {
+            echo "You try hack";
+        }
     }
 }

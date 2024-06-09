@@ -15,9 +15,15 @@
     </div>
     <div class="button-product-action clearfix">
         <div class="cart icon">
-            <a class="btn btn-outline-inverse buy" product-id="<?=$product->getId()?>" href="javascript:void(0)" title="Thêm vào giỏ">
-                Thêm vào giỏ <i class="fa fa-shopping-cart"></i>
-            </a>
+            <?php if ($product->getInventoryQty() > 0) : ?>
+                <a class="btn btn-outline-inverse buy" product-id="<?= $product->getId() ?>" href="javascript:void(0)" title="Thêm vào giỏ">
+                    Thêm vào giỏ <i class="fa fa-shopping-cart"></i>
+                </a>
+            <?php else : ?>
+                <a class="btn btn-outline-inverse disabled" href="javascript:void(0)">
+                    Hết hàng
+                </a>
+            <?php endif; ?>
         </div>
         <div class="quickview icon">
             <a class="btn btn-outline-inverse" href="index.php?c=product&a=show&id=<?= $product->getId() ?>" title="Xem nhanh">

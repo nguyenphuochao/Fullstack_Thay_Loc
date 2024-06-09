@@ -18,5 +18,5 @@ define("JWT_KEY", "godashop-key");
 
 define("SHOP_OWNER", "nguyenphuochao456@gmail.com");
 
+// cấu hình google,facebook
 
-echo 1;
